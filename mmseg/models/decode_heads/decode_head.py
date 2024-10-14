@@ -92,7 +92,7 @@ class BaseDecodeHead(BaseModule, metaclass=ABCMeta):
                  conv_cfg=None,
                  norm_cfg=None,
                  act_cfg=dict(type='ReLU'),
-                 in_index=-1,
+                 in_index:int|list[int]=-1,
                  input_transform=None,
                  loss_decode=dict(
                      type='CrossEntropyLoss',
