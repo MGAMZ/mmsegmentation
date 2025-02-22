@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=72.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmsegmentation"
+version = "0.30.0"
+description = "Open MMLab Semantic Segmentation Toolbox and Benchmark"
+readme = "README.md"
+authors = [
+    {name = "MMSegmentation Contributors", email = "openmmlab@gmail.com"},
+]
+license = {text = "Apache License 2.0"}
+keywords = ["computer vision", "semantic segmentation"]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "matplotlib",
+    "mmcls>=0.20.1",
+    "numpy",
+    "packaging",
+    "prettytable",
+    "scipy"
+]
+
+[project.urls]
+Homepage = "http://github.com/open-mmlab/mmsegmentation"
+
+[tool.setuptools]
+packages = {find = {exclude = ["configs", "tools", "demo"]}}
+zip-safe = false
+include-package-data = true
