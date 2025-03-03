@@ -33,7 +33,6 @@ dependencies = [
 [project.urls]
 Homepage = "http://github.com/open-mmlab/mmsegmentation"
 
-[tool.setuptools]
-packages = {find = {exclude = ["configs", "tools", "demo"]}}
-zip-safe = false
-include-package-data = true
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mmseg"]
