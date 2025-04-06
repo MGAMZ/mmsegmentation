@@ -23,7 +23,7 @@ def _expand_onehot_labels_dice(pred: torch.Tensor,
     """
     num_classes = pred.shape[1]
     one_hot_target = torch.clamp(target, min=0, max=num_classes)
-    one_hot_target = torch.nn.functional.one_hot(one_hot_target,
+    one_hot_target = torch.nn.functional.one_hot(one_hot_target.long(),
                                                  num_classes + 1)
     one_hot_target = one_hot_target[..., :num_classes].permute(0, 3, 1, 2)
     return one_hot_target
