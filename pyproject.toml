@@ -34,5 +34,6 @@ dependencies = [
 Homepage = "http://github.com/open-mmlab/mmsegmentation"
 
 [tool.setuptools.packages.find]
+# 需要在源码根目录搜索，并包含 mmseg 及其全部子包
 where = ["."]
-include = ["mmseg"]
+include = ["mmseg*"]
