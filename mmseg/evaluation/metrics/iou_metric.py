@@ -79,17 +79,13 @@ class IoUMetric(BaseMetric):
             pred_label = data_sample['pred_sem_seg']['data'].squeeze()
             # format_only always for test dataset without ground truth
             if not self.format_only:
-                label = data_sample['gt_sem_seg']['data'].squeeze().to(
-                    pred_label)
+                label = data_sample['gt_sem_seg']['data'].squeeze().to(pred_label)
                 self.results.append(
-                    self.intersect_and_union(pred_label, label, num_classes,
-                                             self.ignore_index))
+                    self.intersect_and_union(pred_label, label, num_classes, self.ignore_index))
             # format_result
             if self.output_dir is not None:
-                basename = osp.splitext(osp.basename(
-                    data_sample['img_path']))[0]
-                png_filename = osp.abspath(
-                    osp.join(self.output_dir, f'{basename}.png'))
+                basename = osp.splitext(osp.basename(data_sample['img_path']))[0]
+                png_filename = osp.abspath(osp.join(self.output_dir, f'{basename}.png'))
                 output_mask = pred_label.cpu().numpy()
                 # The index range of official ADE20k dataset is from 0 to 150.
                 # But the index range of output is from 0 to 149.
@@ -187,15 +183,9 @@ class IoUMetric(BaseMetric):
         label = label[mask]
 
         intersect = pred_label[pred_label == label]
-        area_intersect = torch.histc(
-            intersect.float(), bins=(num_classes), min=0,
-            max=num_classes - 1).cpu()
-        area_pred_label = torch.histc(
-            pred_label.float(), bins=(num_classes), min=0,
-            max=num_classes - 1).cpu()
-        area_label = torch.histc(
-            label.float(), bins=(num_classes), min=0,
-            max=num_classes - 1).cpu()
+        area_intersect = torch.histc(intersect.float(), bins=(num_classes), min=0, max=num_classes - 1)
+        area_pred_label = torch.histc(pred_label.float(), bins=(num_classes), min=0, max=num_classes - 1)
+        area_label = torch.histc(label.float(), bins=(num_classes), min=0, max=num_classes - 1)
         area_union = area_pred_label + area_label - area_intersect
         return area_intersect, area_union, area_pred_label, area_label
 
