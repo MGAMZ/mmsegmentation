@@ -157,7 +157,7 @@ class IoUMetric(BaseMetric):
         return metrics
 
     @staticmethod
-    def intersect_and_union(pred_label: torch.tensor, label: torch.tensor,
+    def intersect_and_union(pred_label: torch.Tensor, label: torch.Tensor,
                             num_classes: int, ignore_index: int):
         """Calculate Intersection and Union.
 
@@ -177,7 +177,8 @@ class IoUMetric(BaseMetric):
             torch.Tensor: The prediction histogram on all classes.
             torch.Tensor: The ground truth histogram on all classes.
         """
-
+        pred_label = pred_label.to(device='cpu', dtype=torch.uint8)
+        label = label.to(device='cpu', dtype=torch.uint8)
         mask = (label != ignore_index)
         pred_label = pred_label[mask]
         label = label[mask]
