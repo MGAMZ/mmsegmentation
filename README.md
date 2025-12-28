@@ -54,6 +54,9 @@ English | [简体中文](README_zh-CN.md)
     <img src="https://user-images.githubusercontent.com/25839884/219026120-ba71e48b-6e94-4bd4-b4e9-b7d175b5e362.png" width="3%" alt="" /></a>
 </div>
 
+> [!Note]
+> This fork was created for me to submit my contributions to the main branch. Since the original parent project is no longer actively maintained, I have now switched to submitting code to [OneDL-MMSegmentation](https://github.com/VBTI-development/onedl-mmsegmentation) project, and the corresponding fork is [here](https://github.com/DaDong-Academy/onedl-mmsegmentation).
+
 ## Introduction
 
 MMSegmentation is an open source semantic segmentation toolbox based on PyTorch.
